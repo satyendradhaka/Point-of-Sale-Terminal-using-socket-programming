@@ -4,11 +4,16 @@ import socket
 
 #command line arguments accepted
 args= sys.argv
+if(len(args)<2):
+    print("please provide which port value")
+    sys.exit()
 port= int(args[1])
 
 #socket initialisation
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+print("socket is intialised")
 s.bind(('', port))
+print("socket is binded to: "+ str(port))
 
 #managing database
 f= open("database.txt", "r")
@@ -18,17 +23,19 @@ for i in text:
     i=i.split()
     temp=[i[1], i[2]]
     db[i[0]]=temp
+print('database has been connected')
 
 #start socket for listening
 s.listen(5)
+print("socket is listening")
 print('waiting for connections')
 
 #starting communication between server and client
 while True:
     c, addr = s.accept()
-    print(addr)
+    print("connection accepted from ", addr)
+    c.send('hello from server'.encode('utf-8'))
     amount=0
-    print('connection accepted')
     while True:
         request=c.recv(1024).decode()
         client_data=request.split()

@@ -1,0 +1,5 @@
+1 burger 55
+2 chai 234
+102 coffee 356
+256 drink 20.52
+365  water 20.22

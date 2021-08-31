@@ -1,7 +1,0 @@
-import sys
-arg= sys.argv
-
-s=arg[1]#s=int(s)
-x=arg[2]
-#x=int(x)
-print(s+x)
